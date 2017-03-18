@@ -1,5 +1,7 @@
 # Make An Event-Driven Bot with OpenWhisk
 
+## General Setup
+
 ### 1. Clone this repo
 
 Prerequisites: I assume you have node and npm installed. Need help installing either? [Here's a link for you.](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
@@ -41,6 +43,10 @@ Register for a (free) Zapier account [here](https://zapier.com).
 
 You can also run your own OpenWhisk server! This is beyond the scope of this lab, but you can find more info [here](https://github.com/openwhisk/openwhisk).
 
+## Create a Zapier-driven Twitterbot
+
+This Twitterbot will respond to @-mentions by replying to the sender with their tweet text translated into Pig Latin. We'll use Zapier to send the triggering event. 
+
 ##### Create your Zapier trigger
 We'll be creating a 'Mention' trigger with Zapier. Zapier accounts can make two-step Zaps (like this one) [free](https://zapier.com/pricing/)! 
 
@@ -59,3 +65,7 @@ This trigger will run every five minutes, and will send a *separate* call to you
 9. Go ahead and test your Zap! If there are errors, check the URL field and that you set "Send as JSON" correctly.
 10. Click "Finish", and in the next screen name your Zap (giving it your bot's name is a good idea).
 11. Set your Zap to ON. It will now run every five minutes.
+
+##### Add your Twitter keys
+
+If you haven't already, put your key, secret, token, and access token secret in the `temp-config.js` file, and rename it to `config.js`. Then delete `temp-config.js`.
