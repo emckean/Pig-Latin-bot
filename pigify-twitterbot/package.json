@@ -1,0 +1,21 @@
+{
+  "name": "openwhisk-lab-script",
+  "version": "1.0.0",
+  "description": "code for building an event-triggered openwhisk bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "openwhisk",
+    "bot",
+    "IBM",
+    "Interconnect"
+  ],
+  "author": "Erin McKean",
+  "license": "MIT",
+  "dependencies": {
+    "pig-latin": "^2.0.2",
+    "twit": "^2.2.5"
+  }
+}
