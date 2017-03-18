@@ -1,0 +1,27 @@
+{
+  "name": "cron-sequence-example",
+  "version": "1.0.0",
+  "description": "code for building an event-triggered openwhisk bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "keywords": [
+    "openwhisk",
+    "bot",
+    "IBM",
+    "Interconnect"
+  ],
+  "author": "Erin McKean",
+  "license": "MIT",
+  "dependencies": {
+    "twit": "^2.2.5"
+    },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "del": "^2.2.0",
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5",
+    "rewire": "^2.5.1"
+  }
+}
