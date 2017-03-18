@@ -26,8 +26,10 @@ function main(params){
     } catch (e) {
         JSONparams = JSON.parse(JSON.stringify(params.json));
     }
-    var unmentioned = JSONparams.text.replace(/@pigify ?/gi, ' ');
-    var pigged = piglatin(unmentioned.trim());
+    var unmentioned = JSONparams.text.replace(/@pigify/gi, ' ');
+    var whitespaceCleaned = unmentioned.replace(/ [?!,.;:\'\"]/gi, '')
+    console.log(whitespaceCleaned)
+    var pigged = piglatin(whitespaceCleaned.trim());
     var text = '@'+JSONparams.user.name + " " + pigged;
     var errorText = '@'+JSONparams.user.name + " " + "Orrysay, Iway ouldn'tcay igifypay atthay."
 

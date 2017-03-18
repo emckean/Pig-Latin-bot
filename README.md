@@ -81,7 +81,8 @@ This trigger will run every five minutes, and will send a *separate* call to you
 8. Under "Send As JSON" choose YES. Leave the "JSON key" setting as "json". All of the other fields can be left as the default.
 9. Go ahead and test your Zap! If there are errors, check the URL field and that you set "Send as JSON" correctly.
 10. Click "Finish", and in the next screen name your Zap (giving it your bot's name is a good idea).
-11. Set your Zap to ON. It will now run every five minutes.
+11. Set your Zap to ON. It will now run every five minutes. You can also run it manually from your Zapier dashboard.
+
 
 
 ##### Testing
