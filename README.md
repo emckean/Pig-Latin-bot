@@ -93,3 +93,6 @@ You can invoke the action with test parameters by running `wsk action invoke YOU
 
 _NOTE_: Twitter doesn't like it when you try to tweet the same thing over and over, so change up the 'text' parameter in `testparams.json` if you are going to be testing several times.
 
+##### Thanks
+Thanks to Isaac Hess for the great [`pig-latin` module](https://github.com/isaachess/pig-latin), [Darius Kazemi](https://github.com/dariusk) for `wordfilter` and bots in general, and [Ray Camden](https://www.raymondcamden.com/) for great blog posts about OpenWhisk!
+
