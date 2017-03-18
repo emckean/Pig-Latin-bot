@@ -45,7 +45,24 @@ You can also run your own OpenWhisk server! This is beyond the scope of this lab
 
 ## Create a Zapier-driven Twitterbot
 
-This Twitterbot will respond to @-mentions by replying to the sender with their tweet text translated into Pig Latin. We'll use Zapier to send the triggering event. 
+This Twitterbot will respond to @-mentions by replying to the sender with their tweet text translated into Pig Latin. We'll use Zapier to send the triggering event, and OpenWhisk to take the text, translate into Pig Latin, and tweet the response. 
+
+##### Add your Twitter keys
+
+If you haven't already, follow the instructions above to create a new Twitter account for your bot and a new app. Then put your key, secret, token, and access token secret in the `temp-config.js` file, and rename it to `config.js`. Then delete `temp-config.js`.
+
+##### Create your Openwhisk Action & URL
+
+Because we want to include the `pig-latin` module and our config file, we're going to create our OpenWhisk action by uploading a zip file.
+
+ 1. Switch into the pigify-twitterbot directory.
+ 2. Run `npm install`
+ 3. Zip the files in this directory: `zip -r -X "bot.zip" *` 
+ 4. Create your OpenWhisk action: `wsk action create YOURACTIONNAME --kind nodejs:6 bot.zip`
+ 5. Check to see if your action has been created: `wsk action list`
+ 6. Create a URL for your action: `wsk api-experimental create /YOURURLNAME get YOURACTIONNAME` (This creates a GET endpoint that will call your OpenWhisk function.)
+ 7. You should get a response like: `ok: created API /YOURURLNAME GET for action YOURACTIONNAME` and then a long https url
+ 8. You can get that URL again anytime by using the `wsk api-experimental list` command.
 
 ##### Create your Zapier trigger
 We'll be creating a 'Mention' trigger with Zapier. Zapier accounts can make two-step Zaps (like this one) [free](https://zapier.com/pricing/)! 
@@ -60,12 +77,18 @@ This trigger will run every five minutes, and will send a *separate* call to you
 4. Choose the "Fetch and Continue" option. (If there are no mentions, none will be found ... you can skip Zapier's test at this point if you like.) Choose "Continue".
 5. Choose an "Action App" -- it should be Webhooks (at the bottom of the list).
 6. Choose the "GET" action.
-7. In the URL field, enter the GET URL from your OpenWhisk action. If you have forgotten the URL, you can use the `wsk api-experimental list` command from the terminal to see all of the action URLs you have created.
+7. In the URL field, enter the GET URL you created for your OpenWhisk action. If you have forgotten the URL, you can use the `wsk api-experimental list` command from the terminal to see all of the action URLs you have created.
 8. Under "Send As JSON" choose YES. Leave the "JSON key" setting as "json". All of the other fields can be left as the default.
 9. Go ahead and test your Zap! If there are errors, check the URL field and that you set "Send as JSON" correctly.
 10. Click "Finish", and in the next screen name your Zap (giving it your bot's name is a good idea).
 11. Set your Zap to ON. It will now run every five minutes.
 
-##### Add your Twitter keys
 
-If you haven't already, put your key, secret, token, and access token secret in the `temp-config.js` file, and rename it to `config.js`. Then delete `temp-config.js`.
+##### Testing
+
+You can test the helper functions with `npm test`.
+
+You can invoke the action with test parameters by running `wsk action invoke YOURACTIONNAME  --blocking -r --param-file testparams.json`
+
+_NOTE_: Twitter doesn't like it when you try to tweet the same thing over and over, so change up the 'text' parameter in `testparams.json` if you are going to be testing several times.
+

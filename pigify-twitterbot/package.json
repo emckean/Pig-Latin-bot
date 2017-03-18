@@ -4,7 +4,7 @@
   "description": "code for building an event-triggered openwhisk bot",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "./node_modules/.bin/mocha"
   },
   "keywords": [
     "openwhisk",
@@ -16,6 +16,14 @@
   "license": "MIT",
   "dependencies": {
     "pig-latin": "^2.0.2",
-    "twit": "^2.2.5"
+    "twit": "^2.2.5",
+    "wordfilter": "^0.2.6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "del": "^2.2.0",
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5",
+    "rewire": "^2.5.1"
   }
 }
