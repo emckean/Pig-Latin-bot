@@ -1,6 +1,6 @@
-#Make An Event-Driven Bot with OpenWhisk
+# Make An Event-Driven Bot with OpenWhisk
 
-###1. Clone this repo
+### 1. Clone this repo
 
 Prerequisites: I assume you have node and npm installed. Need help installing either? [Here's a link for you.](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
@@ -8,7 +8,7 @@ Prerequisites: I assume you have node and npm installed. Need help installing ei
 2. Run `npm install`
 3. Open in your favorite editor.
 
-###2. Get Credentials and Add Configuration
+### 2. Get Credentials and Add Configuration
 
 ##### Twitter
 * If you don't have a Twitter account, you will need one for your bot and Zapier. You can sign up for a Twitter account [here](https://twitter.com).
