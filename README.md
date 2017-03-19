@@ -60,7 +60,7 @@ Because we want to include the `pig-latin` module and our config file, we're goi
  3. Zip the files in this directory: `zip -r -X "bot.zip" *` 
  4. Create your OpenWhisk action: `wsk action create YOURACTIONNAME --kind nodejs:6 bot.zip`
  5. Check to see if your action has been created: `wsk action list`
- 6. Create a URL for your action: `wsk api-experimental create /YOURURLNAME get YOURACTIONNAME` (This creates a GET endpoint that will call your OpenWhisk function.)
+ 6. Create a URL for your action: `wsk api-experimental create /YOURURLNAME get YOURACTIONNAME` (This creates a GET endpoint that will call your OpenWhisk function. More info on this *experimental* feature is [here](https://console.ng.bluemix.net/docs/openwhisk/openwhisk_apigateway.html#openwhisk_apigateway).)
  7. You should get a response like: `ok: created API /YOURURLNAME GET for action YOURACTIONNAME` and then a long https url
  8. You can get that URL again anytime by using the `wsk api-experimental list` command.
 
@@ -83,7 +83,7 @@ This trigger will run every five minutes, and will send a *separate* call to you
 10. Click "Finish", and in the next screen name your Zap (giving it your bot's name is a good idea).
 11. Set your Zap to ON. It will now run every five minutes. You can also run it manually from your Zapier dashboard.
 
-
+_IMPORTANT_: Your web url is not restricted in any way. Anyone with the URL can trigger your OpenWhisk action.
 
 ##### Testing
 
@@ -92,6 +92,10 @@ You can test the helper functions with `npm test`.
 You can invoke the action with test parameters by running `wsk action invoke YOURACTIONNAME  --blocking -r --param-file testparams.json`
 
 _NOTE_: Twitter doesn't like it when you try to tweet the same thing over and over, so change up the 'text' parameter in `testparams.json` if you are going to be testing several times.
+
+##### More
+* You can see a nice GUI of all your Bluemix OpenWhisk actions on the [OpenWhisk Dashboard](https://console.ng.bluemix.net/openwhisk/dashboard).
+* You can also see your OpenWhisk function activities from the command line with `wsk activation poll`.
 
 ##### Thanks
 Thanks to Isaac Hess for the great [`pig-latin` module](https://github.com/isaachess/pig-latin), [Darius Kazemi](https://github.com/dariusk) for `wordfilter` and bots in general, and [Ray Camden](https://www.raymondcamden.com/) for great blog posts about OpenWhisk!

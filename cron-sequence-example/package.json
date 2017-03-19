@@ -15,8 +15,10 @@
   "author": "Erin McKean",
   "license": "MIT",
   "dependencies": {
+    "moment": "^2.17.1",
+    "openwhisk": "^3.3.5",
     "twit": "^2.2.5"
-    },
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "del": "^2.2.0",
