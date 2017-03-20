@@ -17,12 +17,11 @@ function main(params){
   console.log('these are the params: ' + JSON.stringify(params));
   var wsk = openwhisk();  
   var user = params.name || '@pigify';
-  return new Promise((resolve, reject) => {
-    resolve({ statusCode: 200,
+  return { statusCode: 200,
         headers: { 'Content-type': 'application/json' },
-        body: 'got here'
-    })
-  });
+        text: 'got here'
+    }
+
 //   return new Promise((resolve, reject) => {    
 //     T.get('search/tweets', { q: user+' since:2017-01-01', count: 100 }, function(err, data, response) {
 //             if (err) {
