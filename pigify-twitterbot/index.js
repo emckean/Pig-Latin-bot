@@ -4,7 +4,7 @@ var wordfilter = require('wordfilter');
 var T = new Twit(require('./config.js'));
 
 function tweetOK(phrase) {
-      if (!wordfilter.blacklisted(phrase) && phrase !== undefined && phrase !== "" && tweetLengthOK(phrase)){
+      if (!wordfilter.blacklisted(phrase) && phrase !== undefined && phrase !== "" && phrase !== " " && tweetLengthOK(phrase)){
         return true;
       } else {
         return false;

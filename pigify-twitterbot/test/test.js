@@ -52,6 +52,12 @@ describe('word filter test', function() {
 		expect(phraseCheck).to.eql(false);
 	});
 
+	it ('it should return an error if the phrase is just spaces', function(){
+		var phrase = " ";
+		var phraseCheck = tweetOK(phrase);
+		expect(phraseCheck).to.eql(false);
+	});
+
 	it ('it should return true if the phrase is OK', function(){
 		var phrase = "Hi! I am a short phrase that is perfectly fine.";
 		var phraseCheck = tweetOK(phrase);
