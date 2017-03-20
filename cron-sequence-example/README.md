@@ -41,4 +41,12 @@ Once you have an action and a trigger, you can put them together with a rule, li
 The format here is 
 `wsk rule create NameOfRule NameOfTrigger NameOfAction`
 
+## Test it out!
+
+You don't have to wait for your alarm to go off—you can fire your trigger like so: 
+
+`wsk trigger fire sendTweet`
+
+Remember: if nobody has mentioned your new bot on Twitter your bot will not tweet. :)
+
 
