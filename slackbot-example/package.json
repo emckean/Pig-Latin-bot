@@ -16,6 +16,7 @@
   "author": "Erin McKean",
   "license": "MIT",
   "dependencies": {
+    "@slack/client": "^3.9.0",
     "openwhisk": "^3.3.5"
   },
   "devDependencies": {

@@ -5,11 +5,10 @@ var moment = require('moment');
 var openwhisk = require('openwhisk');
 var pigifyAction = config.action_name;
 
-
 function checkDate(date){
     var now = moment(new Date(), 'YYYY-MM-DDTHH:mm:ss.SSS');
-    var lastTime = moment(now).subtract(5, 'minutes');
-    if (moment(date).isSameOrBefore(lastTime)){
+    var lastTime = moment(now, 'YYYY-MM-DDTHH:mm:ss.SSS').subtract(5, 'minutes');
+    if (moment(date, 'ddd MMM DD HH:mm:ss +0000 YYYY').isSameOrBefore(lastTime)){
         return false;
     } else {
         return true;
