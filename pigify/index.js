@@ -1,7 +1,10 @@
 var piglatin = require('pig-latin');
 var Twit = require('twit');
 var wordfilter = require('wordfilter');
-var T = new Twit(require('./config.js'));
+var config = require('./config.js')
+var T = new Twit(config);
+var botName = config.bot_name;
+
 
 function tweetOK(phrase) {
       if (!wordfilter.blacklisted(phrase) && phrase !== undefined && phrase !== "" && phrase !== " " && tweetLengthOK(phrase)){
@@ -26,8 +29,10 @@ function main(params){
     } catch (e) {
         JSONparams = JSON.parse(JSON.stringify(params.json));
     }
-    var unmentioned = JSONparams.text.replace(/@pigify/gi, ' ');
-    var whitespaceCleaned = unmentioned.replace(/ [?!,.;:\'\"]/gi, '')
+    var regex = new RegExp("@"+botName, 'gi');
+    var unmentioned = JSONparams.text.replace(regex, ' ');
+    console.log(unmentioned)
+    var whitespaceCleaned = unmentioned.replace(/  [?!,.;:\'\"]/gi, '')
     console.log(whitespaceCleaned)
     var pigged = piglatin(whitespaceCleaned.trim());
     var text = '@'+JSONparams.user.name + " " + pigged;
