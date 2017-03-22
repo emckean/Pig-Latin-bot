@@ -97,6 +97,21 @@ _NOTE_: Twitter doesn't like it when you try to tweet the same thing over and ov
 * You can see a nice GUI of all your Bluemix OpenWhisk actions on the [OpenWhisk Dashboard](https://console.ng.bluemix.net/openwhisk/dashboard).
 * You can also see your OpenWhisk function activities from the command line with `wsk activation poll`.
 
+### Want to Turn Off Your Bot?
+
+Double-check the name of your rule by entering 
+`wsk rule list` at the command line. Then delete your rule (most likely `tweetRule`) with the line 
+`wsk delete rule tweetRule`. 
+
+### Cleanup
+
+If you are creating this example on a lab computer, make sure you:
+
+* log out of your Bluemix account
+* delete your bot code on this machine: `rm -rf openwhisk-twitterbot-template`
+* de-authorize your OpenWhisk account on this machine, by removing `$HOME/.wskprops` (on the Interconect DevZone lab machines this will be in `/usr/local/bin`).
+* delete sensitive commands (e.g., your OpenWhisk auth command) from your bash/zsh history. You can do this by editing the `~/.bash_history` or `~/.zsh_history` files. (The zsh shell may also  be called `.zhistory`. Not sure where yours is? Try `echo $HISTFILE`.)
+
 ##### Thanks
 Thanks to Isaac Hess for the great [`pig-latin` module](https://github.com/isaachess/pig-latin), [Darius Kazemi](https://github.com/dariusk) for `wordfilter` and bots in general, and [Ray Camden](https://www.raymondcamden.com/) for great blog posts about OpenWhisk!
 
