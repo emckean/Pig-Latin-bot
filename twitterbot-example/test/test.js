@@ -36,36 +36,5 @@ describe('check date tests', function() {
 		expect(dateBool).to.eql(false);
 	});	
 
-	// it ('it should return false if phrase is >= 130 char', function(){
-	// 	var testPhrase = 'This text is far, far, far too long to tweet, if you want to stay well under the Twitter 140-character limit, which you do, I believe, yes?';
-	// 	var phrase = tweetLengthOK(testPhrase);
-	// 	expect(phrase).to.eql(false);
-	// });
 });
 
-// describe('word filter test', function() {
-// 	it ('it should return an error if the phrase contains a bad word', function(){
-// 		var phrase = "using the word 'lame' is lame";
-// 		var phraseCheck = tweetOK(phrase);
-// 		expect(phraseCheck).to.eql(false);
-// 	});
-
-// 	it ('it should return an error if the phrase is undefined', function(){
-// 		var phrase;
-// 		var phraseCheck = tweetOK(phrase);
-// 		expect(phraseCheck).to.eql(false);
-// 	});
-
-// 	it ('it should return an error if the phrase is empty', function(){
-// 		var phrase = "";
-// 		var phraseCheck = tweetOK(phrase);
-// 		expect(phraseCheck).to.eql(false);
-// 	});
-
-// 	it ('it should return true if the phrase is OK', function(){
-// 		var phrase = "Hi! I am a short phrase that is perfectly fine.";
-// 		var phraseCheck = tweetOK(phrase);
-// 		expect(phraseCheck).to.eql(true);
-// 	});
-
-// });
