@@ -67,6 +67,8 @@ Because we want to include the npm module `pig-latin` and our config file, we're
 `rm pigify.zip && zip -r -X "pigify.zip" *`)
  6. Create your OpenWhisk action: `wsk action create pigify --kind nodejs:6 pigify.zip`
  7. Check to see if your action has been created: `wsk action list`.
+ 8. 8. You can invoke this action (which will send a tweet!) with the `testparams.json` file (don't forget change the name of the bot in the `text` field to be your bot name) and this command: `wsk action invoke YOURACTIONNAME --blocking -r --param-file testparams.json`
+
  
 ### 4. Create your `findTweets` OpenWhisk Action
 
@@ -77,10 +79,11 @@ Because we want to include the `moment` library and our config file, we're going
  3. Run `npm install`
  4. Run the tests: `npm test`
  5. Zip the files in this directory: `zip -r -X "findTweets.zip" *` 
- 6. Create your OpenWhisk action: `wsk action create pigify --kind nodejs:6 findTweets.zip`
+ 6. Create your OpenWhisk action: `wsk action create findTweets --kind nodejs:6 findTweets.zip`
  7. Check to see if your action has been created: `wsk action list`.
- 8. You can invoke this action (which will send a tweet!) with the `testparams.json` file (don't forget change the name of the bot in the `text` field to be your bot name) and this command: `wsk action invoke YOURACTIONNAME --blocking -r --param-file testparams.json`
+ 8. You can invoke this action (which will send a tweet!) with the `testparams.json` file (don't forget change the name of the bot in the `text` field to be your bot name) and this command: `wsk action invoke YOURACTIONNAME --blocking -r 
 
+ 
 _NOTE_: Twitter doesn't want accounts to tweet the same thing over and over, so change up the 'text' parameter in testparams.json if you are going to be testing several times.
  
 ### 5. Create your OpenWhisk Trigger
