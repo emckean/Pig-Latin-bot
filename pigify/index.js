@@ -22,6 +22,26 @@ function tweetLengthOK(phrase) {
       }
   }
 
+function cleanTweet(phrase, botName){
+    var nameRegex = new RegExp("@"+botName, 'gi');
+    var punctRegex = new RegExp(/  ?([?!,.;:])/gi);
+    var quoteRegex = new RegExp(/  ([\'\"])([^ ]) /gi);
+    // remove name
+    var unmentioned = phrase.replace(nameRegex, ' ');
+    //deal with extra whitespace before punctuation
+    var fixPunct = unmentioned.replace(punctRegex, function(match, $1) {
+        return $1
+    });
+    var punctFixed = fixPunct;
+    //deal with extra whitespace before quotes
+    var fixQuote = punctFixed.replace(quoteRegex, function(match, $1) {
+        return " " + $1 + $2; 
+    });
+    var whitespaceCleaned = fixQuote;
+    //return cleaned text without leading or trailing whitespace
+    return(whitespaceCleaned.trim());
+}  
+
 function main(params){
     var JSONparams;
     try {
@@ -29,12 +49,8 @@ function main(params){
     } catch (e) {
         JSONparams = JSON.parse(JSON.stringify(params.json));
     }
-    var regex = new RegExp("@"+botName, 'gi');
-    var unmentioned = JSONparams.text.replace(regex, ' ');
-    console.log(unmentioned)
-    var whitespaceCleaned = unmentioned.replace(/  [?!,.;:\'\"]/gi, '')
-    console.log(whitespaceCleaned)
-    var pigged = piglatin(whitespaceCleaned.trim());
+    var cleanText = cleanTweet(JSONparams.text, botName);
+    var pigged = piglatin(cleanText);
     var text = '@'+JSONparams.user.name + " " + pigged;
     var errorText = '@'+JSONparams.user.name + " " + "Orrysay, Iway ouldn'tcay igifypay atthay."
 

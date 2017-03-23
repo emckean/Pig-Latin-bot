@@ -5,7 +5,7 @@ var bot = rewire('../index.js');
 //rewiring
 tweetOK = bot.__get__('tweetOK'); 
 tweetLengthOK = bot.__get__('tweetLengthOK'); 
-
+cleanTweet = bot.__get__('cleanTweet'); 
 
 describe('canary test', function() {
 	it ('should pass this canary test', function(){
@@ -62,6 +62,30 @@ describe('word filter test', function() {
 		var phrase = "Hi! I am a short phrase that is perfectly fine.";
 		var phraseCheck = tweetOK(phrase);
 		expect(phraseCheck).to.eql(true);
+	});
+
+});
+
+describe('cleanTweet tests', function() {
+	it ('it should return phrase with bot name stripped out', function(){
+		var testPhrase = 'testing a bot eh @pigify';
+		var botName = 'pigify';
+		var phrase = cleanTweet(testPhrase, botName);
+		expect(phrase).to.eql('testing a bot eh');
+	});
+
+	it ('it should delete extra spaces before punctuation', function(){
+		var testPhrase = 'testing a bot eh @pigify?';
+		var botName = 'pigify';
+		var phrase = cleanTweet(testPhrase, botName);
+		expect(phrase).to.eql('testing a bot eh?');
+	});
+
+	it ('it should not delete extra spaces before opening quotes', function(){
+		var testPhrase = 'testing a "bot" eh @pigify?';
+		var botName = 'pigify';
+		var phrase = cleanTweet(testPhrase, botName);
+		expect(phrase).to.eql('testing a "bot" eh?');
 	});
 
 });
