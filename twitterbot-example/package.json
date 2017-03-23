@@ -1,7 +1,7 @@
 {
-  "name": "cron-sequence-example",
+  "name": "twitterbot-example",
   "version": "1.0.0",
-  "description": "code for building an event-triggered openwhisk bot",
+  "description": "code for building an event-triggered openwhisk Pig Latin bot",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha"

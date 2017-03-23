@@ -1,7 +1,7 @@
 {
-  "name": "openwhisk-lab-script",
+  "name": "pigify-script",
   "version": "1.0.0",
-  "description": "code for building an event-triggered openwhisk bot",
+  "description": "code for Pig Latin response twitterbot",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha"
