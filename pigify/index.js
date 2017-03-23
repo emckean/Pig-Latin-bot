@@ -23,23 +23,9 @@ function tweetLengthOK(phrase) {
   }
 
 function cleanTweet(phrase, botName){
-    var nameRegex = new RegExp("@"+botName, 'gi');
-    var punctRegex = new RegExp(/  ?([?!,.;:])/gi);
-    var quoteRegex = new RegExp(/  ([\'\"])([^ ]) /gi);
-    // remove name
-    var unmentioned = phrase.replace(nameRegex, ' ');
-    //deal with extra whitespace before punctuation
-    var fixPunct = unmentioned.replace(punctRegex, function(match, $1) {
-        return $1
-    });
-    var punctFixed = fixPunct;
-    //deal with extra whitespace before quotes
-    var fixQuote = punctFixed.replace(quoteRegex, function(match, $1) {
-        return " " + $1 + $2; 
-    });
-    var whitespaceCleaned = fixQuote;
-    //return cleaned text without leading or trailing whitespace
-    return(whitespaceCleaned.trim());
+    var nameRegex = new RegExp(' *@'+botName+' *', 'gi');
+    var unmentioned = phrase.replace(nameRegex, '');
+    return(unmentioned.trim());
 }  
 
 function main(params){
@@ -58,11 +44,9 @@ function main(params){
         return new Promise((resolve, reject) => {    
         T.post('statuses/update', { status: text }, function(err, reply) {
             if (err) {
-                console.log('error');
-                reject({payload: err})
+                reject({payload: err});
             }
             else {
-                console.log(reply);
                 resolve({payload: 'yep, tweeted: '+ text});
             }
       });

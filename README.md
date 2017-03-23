@@ -81,18 +81,18 @@ Because we want to include the `moment` library and our config file, we're going
  5. Zip the files in this directory: `zip -r -X "findTweets.zip" *` 
  6. Create your OpenWhisk action: `wsk action create findTweets --kind nodejs:6 findTweets.zip`
  7. Check to see if your action has been created: `wsk action list`.
- 8. You can invoke this action (which will send a tweet!) with the `testparams.json` file (don't forget change the name of the bot in the `text` field to be your bot name) and this command: `wsk action invoke YOURACTIONNAME --blocking -r 
+ 8. You can invoke this action (which will send a tweet!) with the `testparams.json` file (don't forget change the name of the bot in the `text` field to be your bot name) and this command: `wsk action invoke YOURACTIONNAME --blocking -r --param-file testparams.json`
 
  
 _NOTE_: Twitter doesn't want accounts to tweet the same thing over and over, so change up the 'text' parameter in testparams.json if you are going to be testing several times.
  
 ### 5. Create your OpenWhisk Trigger
  
-We want our bot to tweet once an hour (don't have your bot tweet more than once an hour; that's kind of rude), so we're going to create an OpenWhisk trigger that runs our function. 
+We want our bot to check for new tweets every five minutes, so we're going to create an OpenWhisk trigger that runs our function every five minutes. 
  
 You can set an alarm trigger with `cron` (let's call it `sendTweet`) to make this happen, like so: 
 
-`wsk trigger create onceAnHour --feed /whisk.system/alarms/alarm --param cron "5 * * * 0-6"`
+`wsk trigger create everyFiveMinutes --feed /whisk.system/alarms/alarm --param cron "*/5 * * * *"`
 
 Cron syntax is tricky! If you don't want to remember it, you can use this handy [crontab generator](http://crontab-generator.org/).
  

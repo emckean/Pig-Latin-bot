@@ -26,6 +26,7 @@ function main(params){
             else {
                 data.statuses.map(function(status){
                     if (checkDate(status.created_at) === true) {
+                        console.log('found tweets');
                         resolve(wsk.actions.invoke({
                             actionName: pigifyAction,
                             params: {json:"{\"text\": \""+ status.text + "\",\"user\": {\"name\": \""+status.user.name+"\"}}"}
