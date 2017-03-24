@@ -1,7 +1,7 @@
 {
-  "name": "cron-sequence-example",
+  "name": "pigify-script",
   "version": "1.0.0",
-  "description": "code for building an event-triggered openwhisk bot",
+  "description": "code for Pig Latin response twitterbot",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha"
@@ -15,15 +15,15 @@
   "author": "Erin McKean",
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.17.1",
-    "openwhisk": "^3.3.5",
-    "twit": "^2.2.5"
+    "pig-latin": "^2.0.2",
+    "twit": "^2.2.5",
+    "wordfilter": "^0.2.6"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "del": "^2.2.0",
     "jshint": "^2.9.2",
-    "mocha": "^2.5.3",
-    "rewire": "^2.5.2"
+    "mocha": "^2.4.5",
+    "rewire": "^2.5.1"
   }
 }
