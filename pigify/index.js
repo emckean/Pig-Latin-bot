@@ -22,11 +22,31 @@ function tweetLengthOK(phrase) {
       }
   }
 
-function cleanTweet(phrase, botName){
-    var nameRegex = new RegExp(' *@'+botName+' *', 'gi');
-    var unmentioned = phrase.replace(nameRegex, '');
-    return(unmentioned.trim());
+//ellipses really seem to make the pig-latin module unhappy so lets remove them temporarily
+function removeEllipses(phrase){
+    console.log(phrase)
+    var ellipRegex = new RegExp(/[.]{3,4}/, 'gi');
+    return(phrase.replace(ellipRegex, 'GGGGG'));
 }  
+
+// and put them back! 
+function replaceEllipses(phrase){
+    console.log(phrase)
+    var reEllipRegex = new RegExp(/GgGGGay/, 'gi');
+    return (phrase.replace(reEllipRegex, '...'));
+} 
+
+//remove botname and extra spaces
+function cleanTweet(phrase, botName){
+    var nameRegex = new RegExp(' ?@'+botName+' *', 'gi');
+    var unmentioned = removeEllipses(phrase.replace(nameRegex, ''));
+    var spaceRegex = new RegExp(/[ ]{2,5}/, 'gi');
+    return (unmentioned.replace(spaceRegex, ' ')).trim()
+}  
+
+
+
+
 
 function main(params){
     var JSONparams;
@@ -36,11 +56,19 @@ function main(params){
         JSONparams = JSON.parse(JSON.stringify(params.json));
     }
     var cleanText = cleanTweet(JSONparams.text, botName);
-    var pigged = piglatin(cleanText);
-    var text = '@'+JSONparams.user.name + " " + pigged;
     var errorText = '@'+JSONparams.user.name + " " + "Orrysay, Iway ouldn'tcay igifypay atthay."
+    //if the pigLatin module balks at our text, let's catch that error
+    try {
+        var pigged = piglatin(cleanText)
+        var text = '@'+JSONparams.user.name + " " + replaceEllipses(pigged);
+    }
+    catch (e){
+        console.log('this text did not pigify nicely: ' + cleanText)
+    }
+    
 
     if (tweetOK(text)) {
+        console.log(text)
         return new Promise((resolve, reject) => {    
         T.post('statuses/update', { status: text }, function(err, reply) {
             if (err) {
@@ -51,7 +79,7 @@ function main(params){
             }
       });
     })
-    } else {
+} else {
         return new Promise((resolve, reject) => {    
         T.post('statuses/update', { status: errorText }, function(err, reply) {
             if (err) {

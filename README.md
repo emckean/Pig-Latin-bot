@@ -1,6 +1,6 @@
 # Make An Event-Driven OpenWhisk Twitterbot
 
-Haven't you always wanted at Twitterbot that will respond to @-messages by translating them into Pig Latin and retweeting them? Now you can fulfill that lifelong dream and bucket-list item with this example!
+Haven't you always wanted a Twitterbot that will respond to @-messages by translating them into Pig Latin and retweeting them? Now you can fulfill that lifelong dream and bucket-list item with this example!
 
 What will you do in this example? In this example, you will: 
 
@@ -23,13 +23,13 @@ Prerequisites: I assume you have node and npm installed. Need help installing ei
 ### 2. Get Credentials and Add Configuration
 
 ##### Twitter
-* It's best to create a new Twitter account for your bot, instead of tweeting Pig Latin from your personal Twitter account. You can sign up for a Twitter account [here](https://twitter.com).
+* It's best to create a new Twitter account for your bot (rather than tweeting Pig Latin from your personal Twitter account). You can sign up for a Twitter account [here](https://twitter.com).
 * a Twitter application (not the same as a Twitter account; apply for one at [apps.twitter.com](https://apps.twitter.com))
 * a Consumer Key, a Consumer Secret, an Access Token, and an Access Token Secret.
 
 _NOTE_: when you sign up for a Twitter app, it will ask for a website and a callback URL. You can enter your bot's Twitter URL for the website (e.g., https://www.twitter.com/YOURBOTNAME) and you can leave the callback URL blank.
 
-Also _NOTE_: You may be asked to connect a phone number to your Twitter app account. If you have your phone connected to a different Twitter account, just disconnect it from that account and connect it to the bot account to create your keys. Once your keys are set, you can delete and reattach the number to your primary account.
+Also _NOTE_: You may be asked to connect a phone number to your Twitter bot account. If you have your phone connected to a different Twitter account, just disconnect it from that account and connect it to the bot account to create your keys. Once your keys are set, you can delete and reattach the number to your primary account.
 
 Put your bot's name, consumer key, consumer secret, access token, and access token secret in the `temp-config.js` file, and rename it to `config.js`. Then delete `temp-config.js`.
 

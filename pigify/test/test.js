@@ -7,6 +7,8 @@ tweetOK = bot.__get__('tweetOK');
 tweetLengthOK = bot.__get__('tweetLengthOK'); 
 cleanTweet = bot.__get__('cleanTweet'); 
 
+
+
 describe('canary test', function() {
 	it ('should pass this canary test', function(){
 		expect(true).to.eql(true);
@@ -87,5 +89,7 @@ describe('cleanTweet tests', function() {
 		var phrase = cleanTweet(testPhrase, botName);
 		expect(phrase).to.eql('testing a "bot" eh?');
 	});
+
+
 
 });
