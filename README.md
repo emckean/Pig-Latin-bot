@@ -12,16 +12,14 @@ What will you do in this example? In this example, you will:
 
 ## General Setup
 
-### 1. Clone this repo & run `npm install`
+### 1. Clone this repo & open in an editor
 
 Prerequisites: node and npm installed. Need help installing either? [Here's a link for you.](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
-1. Clone this repo
-2. `cd` into the `pigify` directory and run `npm install`
-3. `cd` into the `pigify` directory and run `npm install`
+1. Clone this repo.
 3. Open in your favorite editor.
 
-### 2. Get Credentials and Add Configuration
+### 2. Get credentials and add configuration
 
 ##### Twitter
 * It's best to create a new Twitter account for your bot (rather than tweeting Pig Latin from your personal Twitter account). You can sign up for a Twitter account [here](https://twitter.com).
@@ -62,7 +60,7 @@ Because we want to include the npm module `pig-latin` and our config file, we're
 
  1. Make sure you're in the `pigify` directory.
  2. Make sure your `config.js` file is created and includes your Twitter keys and bot name.
- 3. Run `npm install`
+ 3. Run `npm install`.
  4. Run the tests: `npm test`
  5. Zip the files in this directory: `zip -r -X "pigify.zip" *`  (If you update your bot, remember to remove your zip file so that it doesn't get re-zipped into your updated file! Try 
 `rm pigify.zip && zip -r -X "pigify.zip" *`)

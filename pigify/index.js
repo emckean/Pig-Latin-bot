@@ -24,14 +24,12 @@ function tweetLengthOK(phrase) {
 
 //ellipses really seem to make the pig-latin module unhappy so lets remove them temporarily
 function removeEllipses(phrase){
-    console.log(phrase)
     var ellipRegex = new RegExp(/[.]{3,4}/, 'gi');
     return(phrase.replace(ellipRegex, 'GGGGG'));
 }  
 
 // and put them back! 
 function replaceEllipses(phrase){
-    console.log(phrase)
     var reEllipRegex = new RegExp(/GgGGGay/, 'gi');
     return (phrase.replace(reEllipRegex, '...'));
 } 
