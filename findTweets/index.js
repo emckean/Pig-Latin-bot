@@ -17,7 +17,7 @@ function checkDate(date){
 
 function main(params){ 
   var wsk = openwhisk();  
-  var user = params.name || '@pigify';
+  var user = config.bot_name;
   return new Promise((resolve, reject) => {    
     T.get('search/tweets', { q: user+' since:2017-01-01', count: 100 }, function(err, data, response) {
             if (err) {
