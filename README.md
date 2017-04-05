@@ -12,9 +12,9 @@ What will you do in this example? In this example, you will:
 
 ## General Setup
 
-### 1. Clone this repo
+### 1. Clone this repo & run `npm install`
 
-Prerequisites: I assume you have node and npm installed. Need help installing either? [Here's a link for you.](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
+Prerequisites: node and npm installed. Need help installing either? [Here's a link for you.](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
 1. Clone this repo
 2. Run `npm install`
