@@ -111,6 +111,8 @@ Once you have an action and a trigger, you can put them together with a rule, li
 The format here is 
 `wsk rule create NameOfRule NameOfTrigger NameOfAction`
 
+You can check your rule with this command: `wsk rule get NameOfRule`
+
 ### 7. Test it out!
 
 With OpenWhisk, you can see your action logs directly in the terminal! Open a new terminal tab, and use the command: 

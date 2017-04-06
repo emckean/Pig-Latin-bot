@@ -1,11 +1,14 @@
 var expect = require('chai').expect;
 var rewire = require("rewire");
 var bot = rewire('../index.js');
+var piglatin = require('pig-latin');
+
 
 //rewiring
 tweetOK = bot.__get__('tweetOK'); 
 tweetLengthOK = bot.__get__('tweetLengthOK'); 
 cleanTweet = bot.__get__('cleanTweet'); 
+removeEllipses = bot.__get__('removeEllipses'); 
 
 
 
@@ -84,11 +87,25 @@ describe('cleanTweet tests', function() {
 	});
 
 	it ('it should not delete extra spaces before opening quotes', function(){
-		var testPhrase = 'testing a "bot" eh @pigify?';
+		var testPhrase = 'hey @pigify testing a "bot" eh @pigify?';
 		var botName = 'pigify';
 		var phrase = cleanTweet(testPhrase, botName);
-		expect(phrase).to.eql('testing a "bot" eh?');
+		expect(phrase).to.eql('hey testing a "bot" eh?');
 	});
+
+	it ('it should pigLatin "GGGGG"', function(){
+		var testPhrase = 'GGGGG';
+		var phrase = piglatin(testPhrase);
+		expect(phrase).to.eql('GgGGGay');
+	});
+
+	it ('it should deal nicely with ellipses', function(){
+		var testPhrase = 'hey @pigify this is another ... test';
+		var botName = 'pigify';
+		var phrase = removeEllipses(cleanTweet(testPhrase, botName));
+		expect(phrase).to.eql('hey this is another GGGGG test');
+	});
+
 
 
 
