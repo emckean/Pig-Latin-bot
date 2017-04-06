@@ -19,7 +19,7 @@ Prerequisites: node and npm installed. Need help installing either? [Here's a li
 1. Clone this repo.
 3. Open in your favorite editor.
 
-### 2. Get credentials and add configuration
+### 2. Get Twitter and Bluemix credentials 
 
 ##### Twitter
 * It's best to create a new Twitter account for your bot (rather than tweeting Pig Latin from your personal Twitter account). You can sign up for a Twitter account [here](https://twitter.com).
@@ -30,14 +30,13 @@ _NOTE_: when you sign up for a Twitter app, it will ask for a website and a call
 
 Also _NOTE_: You may be asked to connect a phone number to your Twitter bot account. If you have your phone connected to a different Twitter account, just disconnect it from that account and connect it to the bot account to create your keys. Once your keys are set, you can delete and reattach the number to your primary account.
 
-Put your bot's name, consumer key, consumer secret, access token, and access token secret in the `temp-config.js` file, and rename it to `config.js`. Then delete `temp-config.js`.
 
 ##### Register for Bluemix
 
 * a Bluemix account. Sign up for one at [https://console.ng.bluemix.net/registration](https://console.ng.bluemix.net/registration). *No credit card required! You'll get 2GB of runtime and container memory free for 30 days, plus access to provision up to 10 services (including databases, devops pipelines, and more).*
 
 
-##### Install and configure Openwhisk
+### 3. Install and configure Openwhisk
 
 If you already have the OpenWhisk CLI installed, check whether you have the latest version: 
 
@@ -54,14 +53,14 @@ You can also run your own OpenWhisk server! This is beyond the scope of this wor
 
 ## Using OpenWhisk
 
-### 3. Create your `pigify` OpenWhisk Action
+### 4. Create your `pigify` OpenWhisk Action
 
 Because we want to include the npm module `pig-latin` and our config file, we're going to create our OpenWhisk action by uploading a zip file.
 
  1. Make sure you're in the `pigify` directory.
 
  
- 2. Make sure your `config.js` file is created and includes your Twitter keys and bot name.
+ 2. Open the `temp-config.js` file and replace the values with your own Twitter credentials and bot name. Then rename this file to `config.js` and delete `temp-config.js`.
  3. Run `npm install`.
  4. Run the tests: `npm test`
  5. Zip the files in this directory: `zip -r -X "pigify.zip" *`   6. Create your OpenWhisk action: `wsk action create pigify --kind nodejs:6 pigify.zip`
@@ -73,14 +72,14 @@ _NOTE_: Twitter doesn't want accounts to tweet the same thing over and over, so 
 
 
  
-### 4. Create your `findTweets` OpenWhisk Action
+### 5. Create your `findTweets` OpenWhisk Action
 
 Because we want to include the `moment` library and our config file, we're going to create our OpenWhisk action by uploading a zip file.
 
  1. Make sure you're in the `findTweets` directory.
 
  
- 2. Make sure your `config.js` file is created and includes your keys, your bot name, and the name of the action you created in step 3 (e.g. `pigify`). 
+ 2. Open the `temp-config.js` file and replace the values with your own Twitter credentials and bot name, and the name of the action you created in step 3 above  (e.g. `pigify`). Then rename this file to `config.js` and delete `temp-config.js`. 
 _NOTE_ You will need the full path of your action name, so check `wsk action list` to see what that is -- it might look something like `/$myBluemixSpace/pigify`. 
  3. Run `npm install`
  4. Run the tests: `npm test`
@@ -91,7 +90,7 @@ _NOTE_ You will need the full path of your action name, so check `wsk action lis
 
 
  
-### 5. Create your OpenWhisk Trigger
+### 6. Create your OpenWhisk Trigger
  
 We want our bot to check for new tweets every five minutes, so we're going to create an OpenWhisk trigger that runs our function every five minutes. 
  
@@ -102,7 +101,7 @@ You can set an alarm trigger with `cron` (let's call it `sendTweet`) to make thi
 Cron syntax is tricky! If you don't want to remember it, you can use this handy [crontab generator](http://crontab-generator.org/).
  
  
-### 6. Create your OpenWhisk Rule
+### 7. Create your OpenWhisk Rule
 
 Once you have an action and a trigger, you can put them together with a rule, like so: 
 
@@ -113,7 +112,7 @@ The format here is
 
 You can check your rule with this command: `wsk rule get NameOfRule`
 
-### 7. Test it out!
+### 8. Test it out!
 
 With OpenWhisk, you can see your action logs directly in the terminal! Open a new terminal tab, and use the command: 
 
@@ -127,13 +126,13 @@ You don't have to wait for your alarm to go off—you can fire your trigger like
 
 _NOTE_ if nobody has mentioned your new bot on Twitter your bot will not tweet. :)
 
-### 8. Want to Turn Off Your Bot?
+### 9. Want to Turn Off Your Bot?
 
 Double-check the name of your rule by entering 
 `wsk rule list` at the command line. Then delete your rule (most likely `tweetRule`) with the line 
 `wsk delete rule tweetRule`. 
 
-### 9. Cleanup
+### 10. Cleanup
 
 If you are creating this example on a lab computer (or any computer that isn't yours), make sure you:
 
