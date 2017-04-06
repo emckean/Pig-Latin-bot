@@ -142,4 +142,12 @@ If you are creating this example on a lab computer (or any computer that isn't y
 * delete sensitive commands (e.g., your OpenWhisk auth command) from your bash/zsh history. You can do this by editing the `~/.bash_history` or `~/.zsh_history` files. (The zsh shell may also  be called `.zhistory`. Not sure where yours is? Try `echo $HISTFILE`.)
 
 
+### Thanks!
+
+Thanks to [Darius Kazemi](https://github.com/dariusk) for the wordfilter module and [Isaac Hess](https://github.com/isaachess) for the pig-latin module.
+
+Thanks also to all those who attended the OpenWhisk bot workshops at the 2017 InterConnect!
+
+All errors, bugs, and omissions are, as always, the sole responsibility of the author.
+
 
