@@ -38,7 +38,7 @@ function replaceEllipses(phrase){
 
 //remove botname and extra spaces
 function cleanTweet(phrase, botName){
-    var nameRegex = new RegExp(' ?@'+botName+' *', 'gi');
+    var nameRegex = new RegExp('@'+botName, 'gi');
     var unmentioned = removeEllipses(phrase.replace(nameRegex, ''));
     var spaceRegex = new RegExp(/[ ]{2,5}/, 'gi');
     return (unmentioned.replace(spaceRegex, ' ')).trim()
