@@ -4,5 +4,6 @@ module.exports = {
   consumer_secret:      '',
   access_token:         '',
   access_token_secret:  '',
-  action_name:          ''
+  action_name:          '',
+  bot_name:             ''
 };
